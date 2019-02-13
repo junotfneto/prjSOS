@@ -22,15 +22,19 @@ public class ModuloConexao {
         String url = "jdbc:mysql://localhost:3306/dbinfox";
         String user = "root";
         String password = "";
+        String arquivo = "jdbc:sqlite:dbinfox.db";
         //estabelecendo a conexão com o banco
         try {
             Class.forName(driver);
             conexao = DriverManager.getConnection(url, user, password);
+            //conexao = DriverManager.getConnection(arquivo);
             return conexao;
 
         } catch (Exception e) {
             //a linha abaixo serve de apoio para esclarecer o erro
             //System.out.println(e);
+            System.out.println("Erro\n");
+            e.printStackTrace();
             return null;
         }
 
