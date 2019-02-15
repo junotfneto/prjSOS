@@ -44,6 +44,30 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             }
             return formatter;
         }
+     
+     private boolean validaRG(String rg){
+        if(rg.length() < 9 || rg.length() > 11) return false;
+        for(int i = 0; i < rg.length(); i++){
+            char c = rg.charAt(i);
+            if(c >= '9' || c <= '0') return false;
+        }
+        return true;
+    }
+    
+    private boolean isNumber(String s){
+        try{
+            Integer.parseInt(s);
+            return true;
+        }catch(Exception e){
+            return false;
+        }
+    }
+    
+    private boolean validaEmail(String s){
+        if(!s.contains("@")) return false;
+        if(!s.contains(".")) return false;
+        return true;
+    }
 
     ///método para adicionar clientes
     private void adicionar() {
@@ -59,6 +83,14 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             pst.setString(7, DatCad.getText());
 
             // validação dos campos obrigatórios
+            if(!validaRG(txtCliRG.getText())){
+                JOptionPane.showMessageDialog(null, "Preencha o RG com apenas números");
+                return;
+            }
+            if(!validaEmail(txtCliMail.getText())){
+                JOptionPane.showMessageDialog(null, "Digite um email válido");
+                return;
+            }
             if ((txtCliNome.getText().isEmpty()) || (txtCliTel.getText().isEmpty()) || (txtCliCPF.getText().isEmpty()) || (txtCliRG.getText().isEmpty())) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios");
             } else {

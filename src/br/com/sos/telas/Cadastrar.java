@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
 import util.ValidaCPF;
 
 /*
@@ -32,6 +33,41 @@ public class Cadastrar extends javax.swing.JDialog {
         conexao = ModuloConexao.conector();
     }
     
+    private boolean validaRG(String rg){
+        if(rg.length() < 9 || rg.length() > 11) return false;
+        for(int i = 0; i < rg.length(); i++){
+            char c = rg.charAt(i);
+            if(c >= '9' || c <= '0') return false;
+        }
+        return true;
+    }
+    
+    private boolean isNumber(String s){
+        try{
+            Integer.parseInt(s);
+            return true;
+        }catch(Exception e){
+            return false;
+        }
+    }
+    
+    private boolean validaEmail(String s){
+        if(!s.contains("@")) return false;
+        if(!s.contains(".")) return false;
+        return true;
+    }
+    
+    protected MaskFormatter createFormatter(String s) {
+        MaskFormatter formatter = null;
+            try {
+                formatter = new MaskFormatter(s);
+            } catch (java.text.ParseException exc) {
+                System.err.println("formatter is bad: " + exc.getMessage());
+                System.exit(-1);
+            }
+        return formatter;
+    }
+    
     private void adicionar() {
         String sql = "insert into tbclientes(nomecli,endcli,fonecli,emailcli,cpfcli,rgcli,datacadastrocli) values(?,?,?,?,?,?,?)";
         try {
@@ -45,6 +81,14 @@ public class Cadastrar extends javax.swing.JDialog {
             pst.setString(7, DatCad.getText());
 
             // validação dos campos obrigatórios
+            if(!validaRG(txtCliRG.getText())){
+                JOptionPane.showMessageDialog(null, "Preencha o RG com apenas números");
+                return;
+            }
+            if(!validaEmail(txtCliMail.getText())){
+                JOptionPane.showMessageDialog(null, "Digite um email válido");
+                return;
+            }
             if ((txtCliNome.getText().isEmpty()) || (txtCliTel.getText().isEmpty()) || (txtCliCPF.getText().isEmpty()) || (txtCliRG.getText().isEmpty())
                     || (!ValidaCPF.isCPF(txtCliCPF.getText())) ) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios");
@@ -92,10 +136,10 @@ public class Cadastrar extends javax.swing.JDialog {
         jLabel8 = new javax.swing.JLabel();
         txtCliNome = new javax.swing.JTextField();
         txtCliEndereco = new javax.swing.JTextField();
-        txtCliTel = new javax.swing.JTextField();
+        txtCliTel = new javax.swing.JFormattedTextField(createFormatter("(##)#####-####"));
         txtCliMail = new javax.swing.JTextField();
         txtCliRG = new javax.swing.JTextField();
-        txtCliCPF = new javax.swing.JTextField();
+        txtCliCPF = new javax.swing.JFormattedTextField(createFormatter("###########"));
         DatCad = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();

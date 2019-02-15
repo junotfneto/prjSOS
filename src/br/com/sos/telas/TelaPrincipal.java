@@ -109,6 +109,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel2.setText("Alterar Senha");
 
         jButton1.setText("Alterar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         menCad.setText("Cadastro");
 
@@ -381,6 +386,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         relatorio.setVisible(true);
         Desktop.add(relatorio);
     }//GEN-LAST:event_MenRelFinalActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        //ESCREVA AQUI A FUNÇÃO DE MUDAR SENHA
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

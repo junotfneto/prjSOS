@@ -179,12 +179,18 @@
     <Component class="javax.swing.JTextField" name="txtCliEndereco">
     </Component>
     <Component class="javax.swing.JTextField" name="txtCliTel">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(createFormatter(&quot;(##)#####-####&quot;))"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="txtCliMail">
     </Component>
     <Component class="javax.swing.JTextField" name="txtCliRG">
     </Component>
     <Component class="javax.swing.JTextField" name="txtCliCPF">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(createFormatter(&quot;###########&quot;))"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="DatCad">
     </Component>

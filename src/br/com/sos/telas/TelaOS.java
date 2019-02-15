@@ -35,6 +35,15 @@ public class TelaOS extends javax.swing.JInternalFrame {
         initComponents();
         conexao = ModuloConexao.conector();
     }
+    
+    private boolean isDouble(String s){
+        try{
+            double x = Double.parseDouble(s);
+            return true;
+        }catch(Exception e){
+            return false;
+        }
+    }
 
     private void pesquisar_cliente() {
         String sql = "select idcli as ID, nomecli as Nome, fonecli as Fone from tbclientes where nomecli like?";
@@ -71,6 +80,10 @@ public class TelaOS extends javax.swing.JInternalFrame {
             pst.setString(10, txtOsImei.getText());
 
             //validação dos campos obrigatórios
+            if(!isDouble(txtOsValor.getText())){
+                JOptionPane.showMessageDialog(null, "Preencha um valor válido");
+                return;
+            }
             if (txtOSDef.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Preencha o Campo obrigatório!");
 
