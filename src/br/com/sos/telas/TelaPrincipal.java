@@ -55,13 +55,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblData = new javax.swing.JLabel();
         lblHora = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtUsuSenha = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         Menu = new javax.swing.JMenuBar();
         menCad = new javax.swing.JMenu();
         menCadCli = new javax.swing.JMenuItem();
         menCadOs = new javax.swing.JMenuItem();
         menCadUsu = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
         menRel = new javax.swing.JMenu();
         menRelCli = new javax.swing.JMenuItem();
         menRelSer = new javax.swing.JMenuItem();
@@ -145,7 +147,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         menCad.add(menCadUsu);
 
+        jMenuItem2.setText("Personalização");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        menCad.add(jMenuItem2);
+
         Menu.add(menCad);
+
+        jMenu2.setText("Financeiro");
+        Menu.add(jMenu2);
 
         menRel.setText("Relatório");
 
@@ -234,7 +247,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtUsuSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(62, 62, 62)
@@ -269,7 +282,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUsuSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addGap(33, 33, 33)
@@ -392,6 +405,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         //ESCREVA AQUI A FUNÇÃO DE MUDAR SENHA
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -435,8 +452,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblHora;
     public static javax.swing.JLabel lblUsuario;
@@ -452,6 +470,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menRelCli;
     private javax.swing.JMenuItem menRelMarc;
     public static javax.swing.JMenuItem menRelSer;
+    private javax.swing.JTextField txtUsuSenha;
     // End of variables declaration//GEN-END:variables
 
     private void setIcon() {
