@@ -34,10 +34,9 @@ public class Cadastrar extends javax.swing.JDialog {
     }
     
     private boolean validaRG(String rg){
-        if(rg.length() < 9 || rg.length() > 11) return false;
+        //if(rg.length() < 9 || rg.length() > 11) return false;
         for(int i = 0; i < rg.length(); i++){
-            char c = rg.charAt(i);
-            if(c >= '9' || c <= '0') return false;
+            if(Character.isDigit(rg.charAt(i))) return false;
         }
         return true;
     }

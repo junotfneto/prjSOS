@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import util.ControleUsuario;
 
 /**
  *
@@ -31,6 +32,8 @@ public class TelaLogin extends javax.swing.JFrame {
      * Creates new form TelaLogin
      */
     public void logar() {
+        ControleUsuario.userLogin = txtUsuario.getText();
+        ControleUsuario.userPass = txtSenha.getText();
         String sql = "select * from tbusuarios where login=? and senha=?";
         try {
             // as linhas abaixo preparama  consulta ao banco em função do que

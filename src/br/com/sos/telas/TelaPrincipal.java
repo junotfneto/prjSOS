@@ -16,6 +16,7 @@ import java.awt.Toolkit;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
+import util.ControleUsuario;
 
 /**
  *
@@ -24,6 +25,8 @@ import net.sf.jasperreports.view.JasperViewer;
 public class TelaPrincipal extends javax.swing.JFrame {
     
     Connection conexao = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
 
     static void setForegroundColor(Color red) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -37,6 +40,38 @@ public class TelaPrincipal extends javax.swing.JFrame {
         conexao = ModuloConexao.conector();
         setIcon();
                 
+        
+    }
+    
+    private void alterarSenha(){
+        String sql="update tbusuarios set senha=? where login=? and senha=?";
+        try{
+            pst=conexao.prepareStatement(sql);
+            pst.setString(1,txtUsuSenha.getText());
+            pst.setString(2, ControleUsuario.userLogin);
+            pst.setString(3, ControleUsuario.userPass);
+            
+            
+            // a estrutura abaixo é usada para confirmar a alteração dos dados do usuário
+            if ( txtUsuSenha.getText().isEmpty() ) {
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios");
+            } else {
+
+                /// a linha abaixo atualiza a tabela usuários com os dados do formulário
+                int adicionado = pst.executeUpdate();
+                /// a linha abaixo serve de apoio ao entendimento da lógica
+                System.out.println(adicionado);
+                if (adicionado > 0) {
+                    JOptionPane.showMessageDialog(null, "Dados do usuário alterados com sucesso!");
+                    // as linhas abaixo, limpam os campos     
+                    txtUsuSenha.setText(null);
+                    
+                }
+            }
+            
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
         
     }
 
@@ -61,6 +96,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menCad = new javax.swing.JMenu();
         menCadCli = new javax.swing.JMenuItem();
         menCadOs = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         menCadUsu = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -136,6 +172,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         menCad.add(menCadOs);
+
+        jMenuItem3.setText("Despesas");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        menCad.add(jMenuItem3);
 
         menCadUsu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_MASK));
         menCadUsu.setText("Usuários");
@@ -403,11 +447,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //ESCREVA AQUI A FUNÇÃO DE MUDAR SENHA
+        alterarSenha();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        TelaDespesas despesas = new TelaDespesas();
+        despesas.setVisible(true);
+        Desktop.add(despesas);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -455,6 +507,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblHora;
     public static javax.swing.JLabel lblUsuario;

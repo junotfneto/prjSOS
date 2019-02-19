@@ -7,10 +7,6 @@ package util;
 
 import javax.swing.text.MaskFormatter;
 
-/**
- *
- * @author junot
- */
 public class Mascara {
     public MaskFormatter Mascara(String Mascara){
         MaskFormatter F_Mascara = new MaskFormatter();

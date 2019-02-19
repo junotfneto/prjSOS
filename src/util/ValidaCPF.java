@@ -5,10 +5,7 @@
  */
 package util;
 import java.util.InputMismatchException;
-/**
- *
- * @author junot
- */
+
 public class ValidaCPF {
     public static boolean isCPF(String CPF) {
         // considera-se erro CPF's formados por uma sequencia de numeros iguais
