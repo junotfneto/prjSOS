@@ -12,6 +12,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import br.com.sos.dal.ModuloConexao;
+import java.awt.Desktop;
 import java.awt.Toolkit;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -99,7 +100,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         menCadUsu = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menFinan = new javax.swing.JMenu();
         menRel = new javax.swing.JMenu();
         menRelCli = new javax.swing.JMenuItem();
         menRelSer = new javax.swing.JMenuItem();
@@ -201,8 +202,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         Menu.add(menCad);
 
-        jMenu2.setText("Financeiro");
-        Menu.add(jMenu2);
+        menFinan.setText("Financeiro");
+        menFinan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menFinanActionPerformed(evt);
+            }
+        });
+        Menu.add(menFinan);
 
         menRel.setText("Relatório");
 
@@ -461,6 +467,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Desktop.add(despesas);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void menFinanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menFinanActionPerformed
+        // TODO add your handling code here:
+        TelaFinanceiro financeiro = new TelaFinanceiro();
+        financeiro.setVisible(true);
+        Desktop.add(financeiro);
+    }//GEN-LAST:event_menFinanActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -504,7 +517,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
@@ -517,6 +529,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menCadCli;
     private javax.swing.JMenuItem menCadOs;
     public static javax.swing.JMenuItem menCadUsu;
+    private javax.swing.JMenu menFinan;
     private javax.swing.JMenu menOpc;
     private javax.swing.JMenuItem menOpcSai;
     private javax.swing.JMenu menRel;
