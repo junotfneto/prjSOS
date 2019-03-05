@@ -99,7 +99,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menCadOs = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         menCadUsu = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        menCadPerson = new javax.swing.JMenuItem();
         menFinan = new javax.swing.JMenu();
         menRel = new javax.swing.JMenu();
         menRelCli = new javax.swing.JMenuItem();
@@ -192,13 +192,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         menCad.add(menCadUsu);
 
-        jMenuItem2.setText("Personalização");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        menCadPerson.setText("Personalização");
+        menCadPerson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                menCadPersonActionPerformed(evt);
             }
         });
-        menCad.add(jMenuItem2);
+        menCad.add(menCadPerson);
 
         Menu.add(menCad);
 
@@ -456,9 +456,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         alterarSenha();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void menCadPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menCadPersonActionPerformed
+        // chama a tela de personalização
+        TelaPersonalizacao personalizacao = new TelaPersonalizacao();
+        personalizacao.setVisible(true);
+        Desktop.add(personalizacao);
+    }//GEN-LAST:event_menCadPersonActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
@@ -518,7 +521,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblHora;
@@ -528,6 +530,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menCad;
     private javax.swing.JMenuItem menCadCli;
     private javax.swing.JMenuItem menCadOs;
+    private javax.swing.JMenuItem menCadPerson;
     public static javax.swing.JMenuItem menCadUsu;
     private javax.swing.JMenu menFinan;
     private javax.swing.JMenu menOpc;
