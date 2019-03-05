@@ -288,7 +288,7 @@ public class TelaOS extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         BtnAnexar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnTirarFoto = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -590,10 +590,10 @@ public class TelaOS extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setText("Tirar Foto");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnTirarFoto.setText("Tirar Foto");
+        btnTirarFoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnTirarFotoActionPerformed(evt);
             }
         });
 
@@ -637,7 +637,7 @@ public class TelaOS extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel14)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnTirarFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(37, 37, 37))
                                     .addComponent(txtOsImei, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
@@ -693,7 +693,7 @@ public class TelaOS extends javax.swing.JInternalFrame {
                     .addComponent(jLabel13)
                     .addComponent(jLabel14)
                     .addComponent(BtnAnexar)
-                    .addComponent(jButton2))
+                    .addComponent(btnTirarFoto))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtOSDef, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -808,9 +808,12 @@ public class TelaOS extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnAnexarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnTirarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTirarFotoActionPerformed
+        // tira uma foto
+        FormCAM cam = new cam();
+        cam.setVisible(true);
+        
+    }//GEN-LAST:event_btnTirarFotoActionPerformed
 
     private void txtCliIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCliIdActionPerformed
         // TODO add your handling code here:
@@ -828,10 +831,10 @@ public class TelaOS extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnOsExcluir;
     private javax.swing.JButton btnOsImprimir;
     private javax.swing.JButton btnOsPesquisar;
+    private javax.swing.JButton btnTirarFoto;
     private javax.swing.JComboBox<String> cboPeca;
     private javax.swing.JComboBox<String> cboSituacao;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
