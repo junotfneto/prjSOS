@@ -17,7 +17,7 @@ import net.proteanit.sql.DbUtils;
  *
  * @author junot
  */
-public class TelaDespesas extends javax.swing.JInternalFrame {
+public class TelaFinanceiro extends javax.swing.JInternalFrame {
 
     Connection conexao = null;
     PreparedStatement pst = null;
@@ -25,24 +25,43 @@ public class TelaDespesas extends javax.swing.JInternalFrame {
     /**
      * Creates new form TelaDespesas
      */
-    public TelaDespesas() {
+    public TelaFinanceiro() {
         initComponents();
         conexao = ModuloConexao.conector();
-        jTextField4.setText(new java.util.Date().toString());
-        pesquisar_cliente();
     }
-    
+ 
     private void pesquisar_cliente() {
-        String sql = "select * from tbgastos where nome like ?";
+        String sql = "select * from tbos";
         try{
             pst = conexao.prepareStatement(sql);
             //passando o contéudo da caixa de pesquisa para o ?
             //Atenção ao % que é a continuação dessa string SQL
-            pst.setString(1,txtCliPesquisar.getText() + "%");
+           // pst.setString(1,txtCliPesquisar.getText() + "%");
             rs=pst.executeQuery();
             // a linha abaixo usa a biblioteca rs2xml.jar para pesquisar a tabela
-            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            double total = 0;
+            while(rs.next()){
+                
+                double valor = rs.getDouble("valor");
+                total += valor;
+            }
             
+            sql = "select * from tbgastos";
+            pst = conexao.prepareStatement(sql);
+            rs=pst.executeQuery();
+            double gastos = 0;
+            while(rs.next()){
+                
+                double valor = rs.getDouble("valor");
+                gastos -= valor;
+            }
+            
+            lblGanhei.setText("R$ "+total);
+            jLabel4.setText("R$ "+gastos);
+            if(total > gastos) jLabel8.setText("LUCRO");
+            else jLabel8.setText("PREJUIZO");
+            
+            jLabel10.setText("R$ "+(total-gastos));
             
         }
         catch (Exception e) {
@@ -50,58 +69,6 @@ public class TelaDespesas extends javax.swing.JInternalFrame {
         }
             
     }
-    
-    private boolean isDouble(String s){
-        try{
-            double x = Double.parseDouble(s);
-            return true;
-        }catch(Exception e){
-            return false;
-        }
-    }
-    
-    private void adicionar() {
-        String sql = "insert into tbgastos(nome,valor,data,tipo) values(?,?,?,?)";
-        try {
-            pst = conexao.prepareStatement(sql);
-            pst.setString(1, jTextField1.getText());
-            pst.setString(2, jTextField3.getText());
-            pst.setString(3, jTextField4.getText());
-            pst.setDate(4, new Date(new java.util.Date().getTime()));
-            
-
-            // validação dos campos obrigatórios
-            
-            if(!isDouble(jTextField3.getText())){
-                JOptionPane.showMessageDialog(null, "Digite um valor válido");
-                return;
-            }
-            if ((jTextField1.getText().isEmpty()) || (jTextField2.getText().isEmpty()) || (jTextField3.getText().isEmpty()) || (jTextField4.getText().isEmpty())) {
-                JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios");
-            } else {
-
-                /// a linha abaixo atualiza a tabela usuários com os dados do formulário
-                int adicionado = pst.executeUpdate();
-                /// a linha abaixo serve de apoio ao entendimento da lógica
-                System.out.println(adicionado);
-                if (adicionado > 0) {
-                    JOptionPane.showMessageDialog(null, "Cliente adicionado com Sucesso!");
-                    // as linhas abaixo, limpam os campos
-                    jTextField1.setText(null);
-                    jTextField2.setText(null);
-                    jTextField3.setText(null);
-                    jTextField4.setText(new java.util.Date().toString());
-                    
-
-                }
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -268,7 +235,10 @@ public class TelaDespesas extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        txtCliPesquisar.setText("");
+        String data1 = txtCliPesquisar.getText();
+        String data2 = jTextField1.getText();
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
