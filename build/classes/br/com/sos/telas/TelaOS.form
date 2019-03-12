@@ -637,7 +637,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/br/com/sos/icones/visualizar.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Visualizar Anexo"/>
+        <Property name="text" type="java.lang.String" value="Visualizar Anexos"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>

@@ -97,10 +97,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menCad = new javax.swing.JMenu();
         menCadCli = new javax.swing.JMenuItem();
         menCadOs = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
         menCadUsu = new javax.swing.JMenuItem();
         menCadPerson = new javax.swing.JMenuItem();
         menFinan = new javax.swing.JMenu();
+        MenFinan = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         menRel = new javax.swing.JMenu();
         menRelCli = new javax.swing.JMenuItem();
         menRelSer = new javax.swing.JMenuItem();
@@ -174,14 +175,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         menCad.add(menCadOs);
 
-        jMenuItem3.setText("Despesas");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        menCad.add(jMenuItem3);
-
         menCadUsu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_MASK));
         menCadUsu.setText("Usuários");
         menCadUsu.setEnabled(false);
@@ -208,6 +201,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 menFinanActionPerformed(evt);
             }
         });
+
+        MenFinan.setText("Financeiro");
+        MenFinan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenFinanActionPerformed(evt);
+            }
+        });
+        menFinan.add(MenFinan);
+
+        jMenuItem3.setText("Despesas");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        menFinan.add(jMenuItem3);
+
         Menu.add(menFinan);
 
         menRel.setText("Relatório");
@@ -468,6 +478,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TelaDespesas despesas = new TelaDespesas();
         despesas.setVisible(true);
         Desktop.add(despesas);
+        
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void menFinanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menFinanActionPerformed
@@ -476,6 +487,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         financeiro.setVisible(true);
         Desktop.add(financeiro);
     }//GEN-LAST:event_menFinanActionPerformed
+
+    private void MenFinanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenFinanActionPerformed
+        // abre o menu financeiro
+        TelaFinanceiro financeiro = new TelaFinanceiro();
+        financeiro.setVisible(true);
+        Desktop.add(financeiro);
+    }//GEN-LAST:event_MenFinanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -514,6 +532,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Desktop;
+    private javax.swing.JMenuItem MenFinan;
     private javax.swing.JMenuItem MenRelFinal;
     private javax.swing.JMenuBar Menu;
     private javax.swing.JButton jButton1;

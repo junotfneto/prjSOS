@@ -7,7 +7,12 @@ package br.com.sos.telas;
 
 import java.sql.*;
 import br.com.sos.dal.ModuloConexao;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.io.DataInputStream;
 import java.util.HashMap;
+import java.util.logging.Level;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -576,7 +581,7 @@ public class TelaOS extends javax.swing.JInternalFrame {
         jLabel13.setText("Peça Principal");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/sos/icones/visualizar.png"))); // NOI18N
-        jButton1.setText("Visualizar Anexo");
+        jButton1.setText("Visualizar Anexos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -805,7 +810,35 @@ public class TelaOS extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void BtnAnexarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAnexarActionPerformed
-        // TODO add your handling code here:
+        //Escolher um arquivo
+       JFileChooser Escolha = new JFileChooser();
+        int Escolher = Escolha.showOpenDialog(null);
+        if (Escolher == Escolha.APPROVE_OPTION) {
+            DataInputStream is = null;
+            try {
+                File ImagemArquivo = Escolha.getSelectedFile();
+                String Path = ImagemArquivo.getPath();
+                File arq = Escolha.getSelectedFile();
+                File f = new File(arq.toString());
+                String path = arq.toString();
+                imagem = new byte[(int) f.length()];
+                is = new DataInputStream(new FileInputStream(path));
+                is.readFully(imagem);
+                is.close();
+                Image Img = Toolkit.getDefaultToolkit().getImage(Path);
+                LabelImagem.setIcon(new ImageIcon(Img.getScaledInstance(418, 241, WIDTH)));
+                Pesquisar = 1;
+            } catch (Exception ex) {
+                Logger.getLogger(CadastroItemPedido.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                try {
+                    is.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(CadastroItemPedido.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            this.requestFocus();
+        }
     }//GEN-LAST:event_BtnAnexarActionPerformed
 
     private void btnTirarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTirarFotoActionPerformed
