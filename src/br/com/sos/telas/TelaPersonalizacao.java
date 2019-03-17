@@ -36,7 +36,7 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
     
     private void adicionar() {
         String sql = "insert into tbInfoEmpresa(nome,razao,cnpj,tel,mail,caminho) values(?,?,?,?,?,?)";
-        try {
+        /*try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, nomeEmpresa.getText());
             pst.setString(2, razaoEmpresa.getText());
@@ -45,7 +45,7 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
             pst.setString(5, mailEmpresa.getText());
             pst.setString(5, caminho.getText());
             
-        }
+        }*/
     }
 
             // validação dos campos

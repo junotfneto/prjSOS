@@ -10,14 +10,20 @@ import br.com.sos.dal.ModuloConexao;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
+import util.Diretorios;
 //import java.util.HashMap;
 
 /**
@@ -97,6 +103,11 @@ public class TelaOS extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "OS emitida com sucesso!");
                 txtCliId.setText(null);
             }
+            
+            
+        Diretorios raiz = new Diretorios("ImagensOS");
+        Diretorios os = new Diretorios(raiz,".");
+        
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -811,20 +822,20 @@ public class TelaOS extends javax.swing.JInternalFrame {
                 File arq = Escolha.getSelectedFile();
                 File f = new File(arq.toString());
                 String path = arq.toString();
-                imagem = new byte[(int) f.length()];
+                byte[] imagem = new byte[(int) f.length()];
                 is = new DataInputStream(new FileInputStream(path));
                 is.readFully(imagem);
                 is.close();
                 Image Img = Toolkit.getDefaultToolkit().getImage(Path);
-                LabelImagem.setIcon(new ImageIcon(Img.getScaledInstance(418, 241, WIDTH)));
-                Pesquisar = 1;
+                //labelImagem.setIcon(new ImageIcon(Img.getScaledInstance(418, 241, WIDTH)));
+                //Pesquisar = 1;
             } catch (Exception ex) {
-                Logger.getLogger(CadastroItemPedido.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TelaOS.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 try {
                     is.close();
                 } catch (IOException ex) {
-                    Logger.getLogger(CadastroItemPedido.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(TelaOS.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             this.requestFocus();
