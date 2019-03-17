@@ -31,11 +31,7 @@ public class TelaDespesas extends javax.swing.JInternalFrame {
         initComponents();
         conexao = ModuloConexao.conector();
         jTextField4.setText(new java.util.Date().toString());
-        pesquisar_cliente();
-        MostraPesquisa();
-        Lista.setVisible(false);
-        MODELO =  new DefaultListModel();
-        Lista.setModel(MODELO);
+        
     }
     
     private void pesquisar_cliente() {
@@ -67,14 +63,15 @@ public class TelaDespesas extends javax.swing.JInternalFrame {
     }
     
     private void adicionar() {
-        String sql = "insert into tbgastos(nome,valor,data,tipo) values(?,?,?,?)";
+        String sql = "insert into tbgastos(nome,valor,dia,tipo, observacao) values(?,?,?,?,?)";
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, jTextField1.getText());
             pst.setString(2, jTextField3.getText());
-            pst.setString(3, jTextField4.getText());
-            pst.setDate(4, new Date(new java.util.Date().getTime()));
-            
+            pst.setString(4, jComboBox2.getSelectedItem().toString());
+            pst.setDate(3, new Date(new java.util.Date().getTime()));
+            pst.setString(5, jTextField5.getText());
+
 
             // validação dos campos obrigatórios
             
@@ -82,7 +79,7 @@ public class TelaDespesas extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Digite um valor válido");
                 return;
             }
-            if ((jTextField1.getText().isEmpty()) || (jTextField2.getText().isEmpty()) || (jTextField3.getText().isEmpty()) || (jTextField4.getText().isEmpty())) {
+            if ((jTextField1.getText().isEmpty()) || (jTextField3.getText().isEmpty()) || (jTextField4.getText().isEmpty())) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios");
             } else {
 
@@ -94,7 +91,6 @@ public class TelaDespesas extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(null, "Cliente adicionado com Sucesso!");
                     // as linhas abaixo, limpam os campos
                     jTextField1.setText(null);
-                    jTextField2.setText(null);
                     jTextField3.setText(null);
                     jTextField4.setText(new java.util.Date().toString());
                     
@@ -135,7 +131,6 @@ public class TelaDespesas extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jComboBox2 = new javax.swing.JComboBox<>();
-        Lista = new javax.swing.JList<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -253,9 +248,7 @@ public class TelaDespesas extends javax.swing.JInternalFrame {
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField1)
-                                            .addComponent(Lista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                        .addComponent(jTextField1))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -296,9 +289,7 @@ public class TelaDespesas extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addComponent(Lista, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -315,7 +306,7 @@ public class TelaDespesas extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                        .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
                         .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3)
@@ -363,7 +354,6 @@ public class TelaDespesas extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList<String> Lista;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

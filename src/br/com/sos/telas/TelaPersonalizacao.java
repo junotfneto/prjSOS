@@ -5,17 +5,69 @@
  */
 package br.com.sos.telas;
 
+import br.com.sos.dal.ModuloConexao;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author informatica
  */
 public class TelaPersonalizacao extends javax.swing.JFrame {
+    
+    Connection conexao = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
 
     /**
      * Creates new form TelaPersonalizacao
      */
     public TelaPersonalizacao() {
         initComponents();
+        conexao = ModuloConexao.conector();
+    }
+
+    private void initComponents() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+    private void adicionar() {
+        String sql = "insert into tbInfoEmpresa(nome,razao,cnpj,tel,mail,caminho) values(?,?,?,?,?,?)";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, nomeEmpresa.getText());
+            pst.setString(2, razaoEmpresa.getText());
+            pst.setString(3, cnpjEmpresa.getText());
+            pst.setString(4, telEmpresa.getText());
+            pst.setString(5, mailEmpresa.getText());
+            pst.setString(5, caminho.getText());
+            
+        }
+    }
+
+            // validação dos campos
+            
+           
+
+                /// a linha abaixo atualiza a tabela usuários com os dados do formulário
+                int adicionado = pst.executeUpdate();
+                /// a linha abaixo serve de apoio ao entendimento da lógica
+                System.out.println(adicionado);
+                if (adicionado > 0) {
+                    JOptionPane.showMessageDialog(null, "Cliente adicionado com Sucesso!");
+                    // as linhas abaixo, limpam os campos
+             
+
+                }
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
     }
 
     /**
@@ -30,17 +82,17 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        nomeEmpresa = new javax.swing.JTextField();
+        razaoEmpresa = new javax.swing.JTextField();
+        cnpjEmpresa = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        btnLogo = new javax.swing.JButton();
+        btnFile = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        telEmpresa = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        mailEmpresa = new javax.swing.JTextField();
+        btnSalvar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,15 +102,15 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
 
         jLabel3.setText("Qual é o CNPJ?");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        nomeEmpresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                nomeEmpresaActionPerformed(evt);
             }
         });
 
         jLabel4.setText("Selecione a logo da Empresa");
 
-        btnLogo.setText("Anexar Logo");
+        btnFile.setText("Anexar Logo");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\TEMP\\Documents\\NetBeansProjects\\prjSOS\\src\\br\\com\\sos\\icones\\personalize.png")); // NOI18N
@@ -68,7 +120,12 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
 
         jLabel7.setText("Digite o e-mail de Contato");
 
-        jButton1.setText("Salvar");
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,17 +144,17 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField1)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE))
-                    .addComponent(btnLogo)
+                        .addComponent(nomeEmpresa)
+                        .addComponent(razaoEmpresa, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE))
+                    .addComponent(btnFile)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addComponent(mailEmpresa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                        .addComponent(telEmpresa, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(cnpjEmpresa, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(73, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(86, 86, 86))
         );
         layout.setVerticalGroup(
@@ -108,37 +165,42 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nomeEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(razaoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cnpjEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(telEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mailEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(btnLogo))
+                    .addComponent(btnFile))
                 .addGap(34, 34, 34)
-                .addComponent(jButton1))
+                .addComponent(btnSalvar))
         );
 
         setBounds(0, 0, 734, 589);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void nomeEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeEmpresaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_nomeEmpresaActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // TODO add your handling code here:
+    adicionar();
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,8 +238,9 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogo;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnFile;
+    private javax.swing.JButton btnSalvar;
+    private javax.swing.JTextField cnpjEmpresa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -185,10 +248,9 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField mailEmpresa;
+    private javax.swing.JTextField nomeEmpresa;
+    private javax.swing.JTextField razaoEmpresa;
+    private javax.swing.JTextField telEmpresa;
     // End of variables declaration//GEN-END:variables
 }

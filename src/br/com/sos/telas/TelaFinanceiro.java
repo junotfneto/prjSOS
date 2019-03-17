@@ -80,10 +80,10 @@ public class TelaFinanceiro extends javax.swing.JInternalFrame {
 
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtCliPesquisar = new javax.swing.JTextField();
+        periodoInicial = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        periodoFinal = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         lblGanhei = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -101,19 +101,18 @@ public class TelaFinanceiro extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Selecione o Período");
 
-        txtCliPesquisar.addActionListener(new java.awt.event.ActionListener() {
+        periodoInicial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCliPesquisarActionPerformed(evt);
+                periodoInicialActionPerformed(evt);
             }
         });
-        txtCliPesquisar.addKeyListener(new java.awt.event.KeyAdapter() {
+        periodoInicial.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtCliPesquisarKeyReleased(evt);
+                periodoInicialKeyReleased(evt);
             }
         });
 
         jButton1.setText("Pesquisar");
-        jButton1.setActionCommand("Pesquisar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -165,11 +164,11 @@ public class TelaFinanceiro extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtCliPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(periodoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(periodoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
@@ -198,9 +197,9 @@ public class TelaFinanceiro extends javax.swing.JInternalFrame {
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtCliPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(periodoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(periodoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -224,19 +223,19 @@ public class TelaFinanceiro extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtCliPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCliPesquisarActionPerformed
+    private void periodoInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodoInicialActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCliPesquisarActionPerformed
+    }//GEN-LAST:event_periodoInicialActionPerformed
 
-    private void txtCliPesquisarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCliPesquisarKeyReleased
+    private void periodoInicialKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_periodoInicialKeyReleased
         // o evento é do tipo enquanto for digitando em tempo real faça o que foi declado abaixo
         
-    }//GEN-LAST:event_txtCliPesquisarKeyReleased
+    }//GEN-LAST:event_periodoInicialKeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String data1 = txtCliPesquisar.getText();
-        String data2 = jTextField1.getText();
+        String data1 = periodoInicial.getText();
+        String data2 = periodoFinal.getText();
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -254,8 +253,8 @@ public class TelaFinanceiro extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblGanhei;
-    private javax.swing.JTextField txtCliPesquisar;
+    private javax.swing.JTextField periodoFinal;
+    private javax.swing.JTextField periodoInicial;
     // End of variables declaration//GEN-END:variables
 }

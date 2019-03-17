@@ -41,21 +41,21 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jTextField1" max="32767" attributes="0"/>
-                      <Component id="jTextField2" pref="413" max="32767" attributes="0"/>
+                      <Component id="nomeEmpresa" max="32767" attributes="0"/>
+                      <Component id="razaoEmpresa" pref="413" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="btnLogo" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnFile" min="-2" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="jTextField5" alignment="0" pref="247" max="32767" attributes="0"/>
-                      <Component id="jTextField4" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jTextField3" alignment="0" max="32767" attributes="0"/>
+                      <Component id="mailEmpresa" alignment="0" pref="247" max="32767" attributes="0"/>
+                      <Component id="telEmpresa" alignment="0" max="32767" attributes="0"/>
+                      <Component id="cnpjEmpresa" alignment="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="73" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="111" max="-2" attributes="0"/>
+              <Component id="btnSalvar" min="-2" pref="111" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -68,35 +68,35 @@
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nomeEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="razaoEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cnpjEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="telEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="mailEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="56" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnLogo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnFile" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -117,21 +117,21 @@
         <Property name="text" type="java.lang.String" value="Qual &#xe9; o CNPJ?"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="nomeEmpresa">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomeEmpresaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JTextField" name="razaoEmpresa">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField3">
+    <Component class="javax.swing.JTextField" name="cnpjEmpresa">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="text" type="java.lang.String" value="Selecione a logo da Empresa"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnLogo">
+    <Component class="javax.swing.JButton" name="btnFile">
       <Properties>
         <Property name="text" type="java.lang.String" value="Anexar Logo"/>
       </Properties>
@@ -152,19 +152,22 @@
         <Property name="text" type="java.lang.String" value="Digite o Telefone de Contato"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField4">
+    <Component class="javax.swing.JTextField" name="telEmpresa">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
         <Property name="text" type="java.lang.String" value="Digite o e-mail de Contato"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField5">
+    <Component class="javax.swing.JTextField" name="mailEmpresa">
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnSalvar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

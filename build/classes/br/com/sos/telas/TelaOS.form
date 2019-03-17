@@ -69,15 +69,14 @@
                               <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="BtnAnexar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txtOsImei" min="-2" pref="266" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
                                       <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="btnTirarFoto" min="-2" pref="94" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                      <Component id="BtnAnexar" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="txtOsImei" min="-2" pref="266" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -151,7 +150,6 @@
                   <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BtnAnexar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnTirarFoto" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -651,14 +649,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnAnexarActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnTirarFoto">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Tirar Foto"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTirarFotoActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
