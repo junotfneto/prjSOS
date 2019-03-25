@@ -10,8 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,14 +29,10 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
         initComponents();
         conexao = ModuloConexao.conector();
     }
-
-    private void initComponents() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     
     private void adicionar() throws SQLException {
-        String sql = "insert into tbInfoEmpresa(nome,razao,cnpj,tel,mail,caminho) values(?,?,?,?,?)";
+        String sql = "insert into tbInfoEmpresa(nome,razao,cnpj,tel,mail) values(?,?,?,?,?)";
         {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, nomeEmpresa.getText());
@@ -47,6 +42,13 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
             pst.setString(5, mailEmpresa.getText());
                
         }
+        
+        int adicionado = pst.executeUpdate();
+                if (adicionado > 0) {
+                    JOptionPane.showMessageDialog(null, "adicionado com Sucesso!");
+    
+    
+                }
     }
 
 
@@ -82,18 +84,11 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
 
         jLabel3.setText("Qual é o CNPJ?");
 
-        nomeEmpresa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeEmpresaActionPerformed(evt);
-            }
-        });
-
         jLabel4.setText("Selecione a logo da Empresa");
 
         btnFile.setText("Anexar Logo");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\TEMP\\Documents\\NetBeansProjects\\prjSOS\\src\\br\\com\\sos\\icones\\personalize.png")); // NOI18N
         jLabel5.setText("Personalização");
 
         jLabel6.setText("Digite o Telefone de Contato");
@@ -173,17 +168,10 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
         setBounds(0, 0, 734, 589);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nomeEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeEmpresaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nomeEmpresaActionPerformed
-
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        try {
-            // TODO add your handling code here:
+
+            // a linha abaixo salva as informacoes da empresa
             adicionar();
-        } catch (SQLException ex) {
-            Logger.getLogger(TelaPersonalizacao.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
@@ -214,11 +202,8 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new TelaPersonalizacao().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new TelaPersonalizacao().setVisible(true);
         });
     }
 
@@ -238,4 +223,6 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
     private javax.swing.JTextField razaoEmpresa;
     private javax.swing.JTextField telEmpresa;
     // End of variables declaration//GEN-END:variables
+
+    
 }
