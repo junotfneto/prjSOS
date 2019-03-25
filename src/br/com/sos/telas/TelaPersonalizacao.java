@@ -6,11 +6,20 @@
 package br.com.sos.telas;
 
 import br.com.sos.dal.ModuloConexao;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import
 
 /**
  *
@@ -44,11 +53,6 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
         }
         
         int adicionado = pst.executeUpdate();
-                if (adicionado > 0) {
-                    JOptionPane.showMessageDialog(null, "adicionado com Sucesso!");
-    
-    
-                }
     }
 
 
@@ -87,6 +91,11 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
         jLabel4.setText("Selecione a logo da Empresa");
 
         btnFile.setText("Anexar Logo");
+        btnFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFileActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel5.setText("Personalização");
@@ -170,9 +179,46 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
+        try {
             // a linha abaixo salva as informacoes da empresa
             adicionar();
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaPersonalizacao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileActionPerformed
+        // Botão de anexar logo
+        JFileChooser Escolha = new JFileChooser();
+        int Escolher = Escolha.showOpenDialog(null);
+        if (Escolher == Escolha.APPROVE_OPTION) {
+            DataInputStream is = null;
+            try {
+                File ImagemArquivo = Escolha.getSelectedFile();
+                String Path = ImagemArquivo.getPath();
+                File arq = Escolha.getSelectedFile();
+                File f = new File(arq.toString());
+                String path = arq.toString();
+                byte[] imagem = new byte[(int) f.length()];
+                is = new DataInputStream(new FileInputStream(path));
+                is.readFully(imagem);
+                is.close();
+                Image Img = Toolkit.getDefaultToolkit().getImage(Path);
+                //labelImagem.setIcon(new ImageIcon(Img.getScaledInstance(418, 241, WIDTH)));
+                //Pesquisar = 1;
+            } catch (Exception ex) {
+                Logger.getLogger(TelaOS.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                try {
+                    is.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(TelaOS.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            this.requestFocus();
+        }
+    }               
+    }//GEN-LAST:event_btnFileActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,8 +250,10 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new TelaPersonalizacao().setVisible(true);
-        });
-    }
+        })
+}
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFile;
@@ -224,5 +272,3 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
     private javax.swing.JTextField telEmpresa;
     // End of variables declaration//GEN-END:variables
 
-    
-}
