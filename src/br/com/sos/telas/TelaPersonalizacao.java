@@ -9,11 +9,13 @@ import br.com.sos.dal.ModuloConexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.JOptionPane;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author informatica
+ * @author kaioprado
  */
 public class TelaPersonalizacao extends javax.swing.JFrame {
     
@@ -34,41 +36,19 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
     }
     
     
-    private void adicionar() {
-        String sql = "insert into tbInfoEmpresa(nome,razao,cnpj,tel,mail,caminho) values(?,?,?,?,?,?)";
-        /*try {
+    private void adicionar() throws SQLException {
+        String sql = "insert into tbInfoEmpresa(nome,razao,cnpj,tel,mail,caminho) values(?,?,?,?,?)";
+        {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, nomeEmpresa.getText());
             pst.setString(2, razaoEmpresa.getText());
             pst.setString(3, cnpjEmpresa.getText());
             pst.setString(4, telEmpresa.getText());
             pst.setString(5, mailEmpresa.getText());
-            pst.setString(5, caminho.getText());
-            
-        }*/
-    }
-
-            // validação dos campos
-            
-           
-
-                /// a linha abaixo atualiza a tabela usuários com os dados do formulário
-                int adicionado = pst.executeUpdate();
-                /// a linha abaixo serve de apoio ao entendimento da lógica
-                System.out.println(adicionado);
-                if (adicionado > 0) {
-                    JOptionPane.showMessageDialog(null, "Cliente adicionado com Sucesso!");
-                    // as linhas abaixo, limpam os campos
-             
-
-                }
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+               
         }
-
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -198,8 +178,12 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
     }//GEN-LAST:event_nomeEmpresaActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
-    adicionar();
+        try {
+            // TODO add your handling code here:
+            adicionar();
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaPersonalizacao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
@@ -231,6 +215,7 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new TelaPersonalizacao().setVisible(true);
             }

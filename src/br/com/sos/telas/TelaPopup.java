@@ -7,7 +7,7 @@ package br.com.sos.telas;
 
 /**
  *
- * @author junot
+ * @author kaioprado
  */
 public class TelaPopup extends javax.swing.JDialog {
 

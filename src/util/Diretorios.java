@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
  *
- * @author junot
+ * @author kaio prado
  */
 public class Diretorios {
 

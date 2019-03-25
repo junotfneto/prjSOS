@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  *
- * @author junot
+ * @author kaioprado
  */
 public class TelaCalendario extends javax.swing.JFrame {
 

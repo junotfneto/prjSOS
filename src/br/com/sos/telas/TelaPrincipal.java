@@ -185,6 +185,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         menCad.add(menCadUsu);
 
+        menCadPerson.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         menCadPerson.setText("Personalização");
         menCadPerson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

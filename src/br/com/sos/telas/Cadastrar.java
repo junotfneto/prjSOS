@@ -80,10 +80,10 @@ public class Cadastrar extends javax.swing.JDialog {
             pst.setString(7, DatCad.getText());
 
             // validação dos campos obrigatórios
-            if(!validaRG(txtCliRG.getText())){
-                JOptionPane.showMessageDialog(null, "Preencha o RG com apenas números");
-                return;
-            }
+            //if(!validaRG(txtCliRG.getText())){
+                //JOptionPane.showMessageDialog(null, "Preencha o RG com apenas números");
+               // return;
+            //}
             if(!validaEmail(txtCliMail.getText())){
                 JOptionPane.showMessageDialog(null, "Digite um email válido");
                 return;

@@ -7,7 +7,8 @@ package util;
 
 /**
  *
- * @author junot
+ * @author kaioprado
+ * 
  */
 public class Despesa {
     public int id;
