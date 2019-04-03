@@ -93,6 +93,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtUsuSenha = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        btnPagamento = new javax.swing.JButton();
         Menu = new javax.swing.JMenuBar();
         menCad = new javax.swing.JMenu();
         menCadCli = new javax.swing.JMenuItem();
@@ -152,6 +153,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        btnPagamento.setText("Pagamento");
+        btnPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPagamentoActionPerformed(evt);
             }
         });
 
@@ -329,7 +337,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                 .addComponent(lblUsuario))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(52, 52, 52)
-                                .addComponent(jButton1)))
+                                .addComponent(jButton1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addComponent(btnPagamento)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -348,7 +359,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(33, 33, 33)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnPagamento)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(lblHora)
                 .addGap(65, 65, 65)
                 .addComponent(lblData)
@@ -496,6 +509,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Desktop.add(financeiro);
     }//GEN-LAST:event_MenFinanActionPerformed
 
+    private void btnPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagamentoActionPerformed
+        // Abre a tela de Pagamento
+        NewJFrame pagamento = new NewJFrame();
+        pagamento.setVisible(true);
+        Desktop.add(pagamento);
+    }//GEN-LAST:event_btnPagamentoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -536,6 +556,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenFinan;
     private javax.swing.JMenuItem MenRelFinal;
     private javax.swing.JMenuBar Menu;
+    private javax.swing.JButton btnPagamento;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
