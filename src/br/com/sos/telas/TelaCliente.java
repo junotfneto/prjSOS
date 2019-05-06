@@ -11,6 +11,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
+import java.lang.String;
+import java.util.Calendar;
 
 // a linha abaixo importa recursos da biblioteca rs2xml.jar
 import net.proteanit.sql.DbUtils;
@@ -79,7 +81,8 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             pst.setString(4, txtCliMail.getText());
             pst.setString(5, txtCliCPF.getText());
             pst.setString(6, txtCliRG.getText());
-            pst.setString(7, DatCad.getText());
+            java.util.Date data = DatCad.getDate();
+            pst.setString(7, );
 
             // validação dos campos obrigatórios
             if(!validaRG(txtCliRG.getText())){
