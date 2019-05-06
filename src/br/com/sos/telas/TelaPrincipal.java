@@ -251,6 +251,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         menRelMarc.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.ALT_MASK));
         menRelMarc.setText("Marcas de Celulares");
+        menRelMarc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menRelMarcActionPerformed(evt);
+            }
+        });
         menRel.add(menRelMarc);
 
         MenRelFinal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK));
@@ -515,6 +520,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pagamento.setVisible(true);
         Desktop.add(pagamento);
     }//GEN-LAST:event_btnPagamentoActionPerformed
+
+    private void menRelMarcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menRelMarcActionPerformed
+        // abre a tela de relatório por marca
+        TelaFinanceiro_1 marcas = new TelaFinanceiro_1();
+        marcas.setVisible(true);
+        Desktop.add(marcas);
+    }//GEN-LAST:event_menRelMarcActionPerformed
 
     /**
      * @param args the command line arguments

@@ -17,7 +17,7 @@ import net.proteanit.sql.DbUtils;
  *
  * @author junot
  */
-public class TelaFinanceiro extends javax.swing.JInternalFrame {
+public class TelaFinanceiro_1 extends javax.swing.JInternalFrame {
 
     Connection conexao = null;
     PreparedStatement pst = null;
@@ -25,50 +25,11 @@ public class TelaFinanceiro extends javax.swing.JInternalFrame {
     /**
      * Creates new form TelaDespesas
      */
-    public TelaFinanceiro() {
+    public TelaFinanceiro_1() {
         initComponents();
         conexao = ModuloConexao.conector();
     }
  
-    private void pesquisar_cliente() {
-        String sql = "select * from tbos";
-        try{
-            pst = conexao.prepareStatement(sql);
-            //passando o contéudo da caixa de pesquisa para o ?
-            //Atenção ao % que é a continuação dessa string SQL
-           // pst.setString(1,txtCliPesquisar.getText() + "%");
-            rs=pst.executeQuery();
-            // a linha abaixo usa a biblioteca rs2xml.jar para pesquisar a tabela
-            double total = 0;
-            while(rs.next()){
-                
-                double valor = rs.getDouble("valor");
-                total += valor;
-            }
-            
-            sql = "select * from tbgastos";
-            pst = conexao.prepareStatement(sql);
-            rs=pst.executeQuery();
-            double gastos = 0;
-            while(rs.next()){
-                
-                double valor = rs.getDouble("valor");
-                gastos -= valor;
-            }
-            
-            lblGanhei.setText("R$ "+total);
-            jLabel4.setText("R$ "+gastos);
-            if(total > gastos) jLabel8.setText("LUCRO");
-            else jLabel8.setText("PREJUIZO");
-            
-            jLabel10.setText("R$ "+(total-gastos));
-            
-        }
-        catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-            
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -163,17 +124,17 @@ public class TelaFinanceiro extends javax.swing.JInternalFrame {
                         .addComponent(jLabel5)
                         .addGap(24, 24, 24)
                         .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(88, 88, 88)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel1))))
+                                .addComponent(jLabel6)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
