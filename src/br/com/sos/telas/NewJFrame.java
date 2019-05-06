@@ -38,7 +38,7 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setText("http://www.google.com.br");
+        jTextField1.setText("https://www.paypal.com/myaccount/transfer/homepage/request");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

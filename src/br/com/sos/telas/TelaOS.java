@@ -75,7 +75,7 @@ public class TelaOS extends javax.swing.JInternalFrame {
     }
 
     private void emitir_os() {
-        String sql = "insert into tbos(tipo, situacao,pecaprincipal, equipamento, marca, defeito, servico, tecnico, valor, idcli, imei) values(?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into tbos(tipo, situacao,pecaprincipal, equipamento, marca, defeito, servico, tecnico, valor, idcli, imei, previsao, entrada) values(?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
             pst = conexao.prepareStatement(sql);
@@ -90,6 +90,8 @@ public class TelaOS extends javax.swing.JInternalFrame {
             pst.setString(9, txtOsValor.getText());
             pst.setString(10, txtCliId.getText());
             pst.setString(11, txtOsImei.getText());
+            pst.setString(12, DatPrevista.getDate().toString());
+            pst.setDate(13, new Date(new java.util.Date().getTime()));
 
             //validação dos campos obrigatórios
             if(!isDouble(txtOsValor.getText())){
@@ -311,7 +313,7 @@ public class TelaOS extends javax.swing.JInternalFrame {
         jLabel15 = new javax.swing.JLabel();
         cboMarca = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        DatPrevista = new com.toedter.calendar.JDateChooser();
 
         setClosable(true);
         setIconifiable(true);
@@ -636,7 +638,7 @@ public class TelaOS extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel16)
                                 .addGap(18, 18, 18)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(DatPrevista, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(19, 19, 19))
@@ -715,7 +717,7 @@ public class TelaOS extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(DatPrevista, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -901,6 +903,7 @@ public class TelaOS extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAnexar;
+    private com.toedter.calendar.JDateChooser DatPrevista;
     private javax.swing.JButton btnOsAdicionar;
     private javax.swing.JButton btnOsAlterar;
     private javax.swing.JButton btnOsExcluir;
@@ -910,7 +913,6 @@ public class TelaOS extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cboPeca;
     private javax.swing.JComboBox<String> cboSituacao;
     private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

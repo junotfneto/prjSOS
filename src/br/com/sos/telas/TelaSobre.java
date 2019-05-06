@@ -44,7 +44,7 @@ public class TelaSobre extends javax.swing.JFrame {
 
         jLabel2.setText("Desenvolvido por Kaio Luiz da Silva Lorena Prado.");
 
-        jLabel3.setText("Requisito para obtenção de nota na disciplina de Projeto, no 5º Semestre de ADS");
+        jLabel3.setText("Requisito para obtenção de nota na disciplina de Projeto, no 6º Semestre de ADS");
 
         jLabel4.setText("Instituto Federal de São Paulo - Campos do Jordão");
 

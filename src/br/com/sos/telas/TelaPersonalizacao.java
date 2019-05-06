@@ -19,7 +19,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
-import
 
 /**
  *
@@ -30,6 +29,11 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
     Connection conexao = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
+    private Object razaoEmpresa;
+    private Object cnpjEmpresa;
+    private Object telEmpresa;
+    private Object mailEmpresa;
+    private Object nomeEmpresa;
 
     /**
      * Creates new form TelaPersonalizacao
@@ -40,7 +44,7 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
     }
     
     
-    private void adicionar() throws SQLException {
+    private void adicionar() throws SQLException{
         String sql = "insert into tbInfoEmpresa(nome,razao,cnpj,tel,mail) values(?,?,?,?,?)";
         {
             pst = conexao.prepareStatement(sql);
@@ -133,17 +137,18 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(mailEmpresa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                        .addComponent(telEmpresa, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cnpjEmpresa, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(btnFile)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(nomeEmpresa, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(razaoEmpresa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE))
-                    .addComponent(jLocaleChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(mailEmpresa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                            .addComponent(telEmpresa, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cnpjEmpresa, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addComponent(jLocaleChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(73, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -259,7 +264,7 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new TelaPersonalizacao().setVisible(true);
-        })
+        }
 }
 
     
@@ -278,7 +283,7 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private com.toedter.components.JLocaleChooser jLocaleChooser1;
     private javax.swing.JTextField mailEmpresa;
-    private javax.swing.JTextField nomeEmpresa;
+    public javax.swing.JTextField nomeEmpresa;
     private javax.swing.JTextField razaoEmpresa;
     private javax.swing.JTextField telEmpresa;
     // End of variables declaration//GEN-END:variables
