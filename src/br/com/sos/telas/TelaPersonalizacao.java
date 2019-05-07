@@ -29,11 +29,7 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
     Connection conexao = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
-    private Object razaoEmpresa;
-    private Object cnpjEmpresa;
-    private Object telEmpresa;
-    private Object mailEmpresa;
-    private Object nomeEmpresa;
+    
 
     /**
      * Creates new form TelaPersonalizacao
@@ -230,8 +226,7 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
                 }
             }
             this.requestFocus();
-        }
-    }               
+        }              
     }//GEN-LAST:event_btnFileActionPerformed
 
     /**
@@ -262,9 +257,9 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new TelaPersonalizacao().setVisible(true);
-        }
+        //java.awt.EventQueue.invokeLater(() -> {
+        //    new TelaPersonalizacao().setVisible(true);
+        //});
 }
 
     
@@ -288,3 +283,4 @@ public class TelaPersonalizacao extends javax.swing.JFrame {
     private javax.swing.JTextField telEmpresa;
     // End of variables declaration//GEN-END:variables
 
+}

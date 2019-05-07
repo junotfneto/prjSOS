@@ -82,7 +82,8 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             pst.setString(5, txtCliCPF.getText());
             pst.setString(6, txtCliRG.getText());
             java.util.Date data = DatCad.getDate();
-            pst.setString(7, );
+            
+            pst.setString(7, data.toString());
 
             // validação dos campos obrigatórios
             if(!validaRG(txtCliRG.getText())){
